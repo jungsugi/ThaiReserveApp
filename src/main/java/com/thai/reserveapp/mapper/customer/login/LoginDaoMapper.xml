@@ -1,0 +1,30 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.homethai.web.dao.customer.login.LoginDao">
+	
+
+	<!-- 로그인 요청시 User 정보 반환 -->
+	<select id="getLoginUser" resultType="com.homethai.web.entity.login.User">
+		Select * from User where LoginId = #{login_id} and password = #{password}
+	</select>
+	
+	
+	<!-- 로그인 요청시 User 정보 반환 -->
+	<select id="getLoginUserInfo" resultType="com.homethai.web.entity.login.User">
+		Select * from User where LoginId = #{login_id}
+	</select>
+	
+	
+	<update id="updateUserInfo" parameterType="hashMap">
+		update User
+		set address_no = #{roadFullAddr}
+			,address_detail = #{addrDetail}
+			,email = #{email}
+			,password = #{password}
+		where LoginId = #{login_id}
+	</update>
+	
+	
+</mapper>

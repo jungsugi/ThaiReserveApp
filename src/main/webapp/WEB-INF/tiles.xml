@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+	
+	<!-- root 경로라고 해가지고 name="*" 하면 모든 요청을 여기서 받아버린다. 위에서 받는다고 해도 무한루프에 빠질수 있다. 그래서 root 경로 Controller에 'root' 를 추가해 준다. -->
+	<definition name="home.*.*" template="/WEB-INF/view/inc/layout.jsp">
+		<put-attribute name="head" value="/WEB-INF/view/inc/head.jsp" />
+		<put-attribute name="top-nav-button" value="/WEB-INF/view/inc/top-nav-button.jsp" />
+		<put-attribute name="top-nav" value="/WEB-INF/view/inc/top-nav.jsp" />
+		<put-attribute name="content" value="/WEB-INF/view/home/{1}/{2}.jsp" />
+	</definition>
+
+
+	<definition name="customer.*.*" template="/WEB-INF/view/inc/layout.jsp">
+		<put-attribute name="head" value="/WEB-INF/view/inc/head.jsp" />
+		<put-attribute name="top-nav-button" value="/WEB-INF/view/inc/top-nav-button.jsp" />
+		<put-attribute name="top-nav" value="/WEB-INF/view/inc/top-nav.jsp" />
+		<put-attribute name="content" value="/WEB-INF/view/customer/{1}/{2}.jsp" />
+	</definition>
+
+
+	<definition name="admin.*.*" template="/WEB-INF/view/inc/layout.jsp">
+		<put-attribute name="head" value="/WEB-INF/view/inc/head.jsp" />
+		<put-attribute name="top-nav-button" value="/WEB-INF/view/inc/top-nav-button.jsp" />
+		<put-attribute name="top-nav" value="/WEB-INF/view/inc/top-nav.jsp" />
+		<put-attribute name="content" value="/WEB-INF/view/admin/{1}/{2}.jsp" />
+	</definition>
+
+</tiles-definitions>

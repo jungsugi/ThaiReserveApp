@@ -1,0 +1,38 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- mapper 의 namespace : 구현할 Interface 경로 -->
+<mapper namespace="com.homethai.web.dao.customer.signin.SignInDao">
+	
+	<!--com.homethai.web.dao.customer.signin.SignInDao 에서 구현할 내용을 여기에 xml로 구현  -->
+	
+	<!-- Select 
+		 * id=Interface에서 구현할 메소드 이름 
+		 * resultType=리턴받을 데이터 형태 (Entity가 될수도 있고, 일반자료형 Int가 될수도 있다.)	 
+	-->
+	<select id="getUser" resultType="com.homethai.web.entity.login.User">
+		select * from User where LoginId = #{ID}
+	</select>
+	
+	
+	<select id="ConfirmId" resultType="int">
+		select count(1) as cnt from User where LoginId = #{ID}
+	</select>
+	
+	
+	<select id="ConfirmJumin" resultType="int">
+		select count(1) as cnt from User where jumin_no = #{jumin_no}
+	</select>
+	
+	
+	<!-- Insert id=Interface에서 구현할 메소드 이름  -->
+	<insert id="SignIn" parameterType="hashMap">
+		INSERT INTO User(userName, LoginId, password, jumin_no, address_no, address_detail, sex, note, email, auth)
+		VALUES (#{userName}, #{LoginId}, #{password}, #{jumin_no}, #{address_no}, #{address_detail}, #{sex}, #{note}, #{email}, #{auth})
+	</insert>
+	
+	
+	
+	
+</mapper>
